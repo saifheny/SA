@@ -3,70 +3,184 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>3D Portfolio | Khalid</title>
+    <title>3D Portfolio - Khalid</title>
+    <meta name="description" content="Explore my interactive 3D portfolio."/>
+    <!-- استدعاء Tailwind CSS ليعمل التصميم بدون ملفات خارجية -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- استدعاء الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { background-color: black; color: white; }
-        .bg-gradient-text {
-            background: linear-gradient(to tr, #6affdf, #ff55e5);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        body { font-family: 'Rubik', sans-serif; background-color: black; color: white; }
+        /* تصحيح بعض الكلاسات المخصصة */
+        .text-up2 { opacity: 1 !important; transform: none !important; }
+        .pause { opacity: 1 !important; filter: none !important; }
+        /* إخفاء شاشة التحميل لأن الجافاسكريبت غير موجود */
+        #panel { display: none !important; }
     </style>
 </head>
-<body class="antialiased">
-    <main class="relative bg-black min-h-screen">
-        
-        <section id="hero" class="relative flex flex-col justify-center items-stretch min-h-screen h-screen overflow-hidden">
-            <img src="imgs/hero-bg.webp" alt="background" class="absolute top-0 left-0 object-cover h-full w-full opacity-50">
+<body class="antialiased bg-black overflow-x-hidden">
 
-            <header class="xl:mx-16 sm:mx-14 mx-5 flex items-center justify-between relative z-20 pt-6">
-                <a href="index.html">
-                    <img src="imgs/white-logo.png" alt="logo" class="h-9 md:h-11 xl:h-14 w-auto">
+    <main class="relative bg-black">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="flex flex-col xl:gap-10 gap-8 justify-center items-stretch sm:pt-9 pt-6 relative min-h-screen h-screen">
+            <!-- Background Image -->
+            <div class="absolute top-0 left-0 w-full h-full z-0">
+                <!-- ملاحظة: تأكد من وجود صورة باسم hero-bg.webp في مجلد imgs بجانب الملف -->
+                <img src="imgs/hero-bg.webp" alt="background" class="object-cover w-full h-full opacity-50" onerror="this.style.display='none'; this.parentElement.style.background='#1a1a1a'">
+            </div>
+
+            <header class="xl:mx-16 sm:mx-14 mx-5 flex items-center justify-between relative z-10">
+                <a href="#">
+                    <!-- Logo Placeholder -->
+                    <div class="text-white font-bold text-2xl">KHALID</div>
                 </a>
                 <nav>
-                    <a href="#contact" class="hidden xl:block">
-                        <button class="bg-zinc-950 text-white border border-white/10 px-6 py-2 rounded-full font-semibold hover:bg-zinc-900 transition">
-                            Let's Talk
+                    <a class="max-xl:hidden" href="#contact">
+                        <button class="bg-slate-800 cursor-pointer relative rounded-full p-px text-xs font-semibold leading-6 text-white inline-block">
+                            <div class="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-1 px-5 ring-1 ring-white/10 hover:bg-zinc-800 transition">
+                                <span>Let's Talk</span>
+                                <svg fill="none" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M10.75 8.75L14.25 12L10.75 15.25" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+                            </div>
                         </button>
                     </a>
                 </nav>
             </header>
 
-            <section class="flex flex-col relative flex-1 justify-center z-10 px-5 sm:px-16 md:px-24">
-                <div class="max-w-4xl">
-                    <h1 class="text-5xl md:text-7xl font-bold leading-tight tracking-wide">
-                        Hi, I’m <span class="text-white">Khalid</span><br/>
-                        <span class="bg-gradient-text">Full-Stack Dev</span>
-                    </h1>
-                    <p class="text-slate-300 mt-6 text-lg md:text-xl max-w-lg font-light leading-relaxed">
-                        Skilled MERN stack developer building responsive, full stack applications with MongoDB, Express.js, React, and Node.js efficiently 🐦‍🔥
-                    </p>
-
-                    <div class="mt-10 flex flex-wrap items-center gap-6">
-                        <a href="khalid-resume.pdf" target="_blank" class="bg-white text-black px-8 py-3 rounded-lg font-bold shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:scale-105 transition">
-                            My Resume
-                        </a>
-
+            <section class="flex flex-col min-h-0 justify-between xl:flex-row relative flex-1 z-10">
+                <div class="self-start mx-5 3xl:mt-10 xl:mt-6 mt-2 xs:mx-5 sm:mx-16 md:mx-24 3xl:mx-32 select-none min-w-0!">
+                    <div class="relative">
+                        <h1 class="3xl:text-7xl 2xl:text-[65px] xl:text-6xl sm:text-5xl 2xl:mb-5 mb-3 text-[2.6rem] !leading-[1.15] antialiased text-white font-bold">
+                            Hi, I’m <br>
+                            <span class="text-8xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Khalid</span><br>
+                            <span class="bg-clip-text text-transparent bg-gradient-to-tr from-[#6affdf] to-[#ff55e5]">Full-Stack Dev</span>
+                        </h1>
+                    </div>
+                    <div class="mt-2">
+                        <p class="text-slate-300 xl:w-[500px] lg:w-[800px] w-full mb-7 text-lg font-light">
+                            Skilled MERN stack developer building responsive, full stack applications with MongoDB, Express.js, React, and Node.js efficiently 🐦‍🔥
+                        </p>
                         <div class="flex items-center gap-4">
-                            <a href="https://web.facebook.com/profile.php?id=61556630447035" target="_blank">
-                                <img src="imgs/icons/facebook.png" alt="facebook" class="w-8 h-8 hover:opacity-80">
+                            <a target="_blank" class="inline-flex h-12 overflow-hidden rounded-[10px] p-[2px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-shadow duration-300 ease-in-out hover:shadow-[0_0_10px_rgba(124,231,255,0.9)]" href="khalid-resume.pdf">
+                                <span class="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-[10px] bg-black px-6 text-xl font-medium text-white border border-slate-700">My Resume</span>
                             </a>
-                            <a href="https://wa.me/201159212089" target="_blank">
-                                <img src="imgs/icons/whatsapp.png" alt="whatsapp" class="w-8 h-8 hover:opacity-80">
-                            </a>
-                            <a href="https://www.linkedin.com/in/khalid-ki-7382372ba" target="_blank">
-                                <img src="imgs/icons/linkedin.png" alt="linkedin" class="w-8 h-8 hover:opacity-80">
-                            </a>
-                            <a href="mailto:kikhalid192@gmail.com">
-                                <img src="imgs/icons/gmail.png" alt="gmail" class="w-8 h-8 hover:opacity-80">
-                            </a>
+                            <!-- Social Icons -->
+                            <div class="flex items-center gap-3">
+                                <div class="text-white text-sm">Find me on:</div>
+                                <a href="#" class="text-white hover:text-blue-500">LinkedIn</a>
+                                <a href="#" class="text-white hover:text-green-500">WhatsApp</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
         </section>
 
-        </main>
+        <!-- Skills Section -->
+        <section id="skills" class="pt-24 pb-24">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-purple-600">Skills</h2>
+            </div>
+            
+            <div class="px-5 flex flex-wrap justify-center gap-10">
+                <!-- Card 1 -->
+                <div class="h-96 w-96 group hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-zinc-900 border border-white/[0.2] rounded-xl p-6">
+                    <div class="text-2xl font-bold text-white">Frontend Development</div>
+                    <div class="text-sm mt-2 text-neutral-300">Expertise in building dynamic and interactive user interfaces using React.js and Next.js.</div>
+                </div>
+                <!-- Card 2 -->
+                <div class="h-96 w-96 group hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-zinc-900 border border-white/[0.2] rounded-xl p-6">
+                    <div class="text-2xl font-bold text-white">Backend Development</div>
+                    <div class="text-sm mt-2 text-neutral-300">Proficiency in developing scalable server-side applications using Node.js and Express.js.</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="h-96 w-96 group hover:shadow-2xl hover:shadow-emerald-500/[0.1] bg-zinc-900 border border-white/[0.2] rounded-xl p-6">
+                    <div class="text-2xl font-bold text-white">UI / UX</div>
+                    <div class="text-sm mt-2 text-neutral-300">Expertise in designing intuitive and visually appealing user interfaces.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="statistics" class="py-24 bg-zinc-900/20">
+            <div class="max-w-7xl mx-auto text-center mb-10">
+                <span class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-neutral-50 to-neutral-400">A glimpse into my development journey.</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 justify-items-center max-w-5xl mx-auto">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gray-300">10+</div>
+                    <div class="text-sm text-cyan-300 mt-2">Clients</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gray-300">20+</div>
+                    <div class="text-sm text-purple-300 mt-2">Projects</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gray-300">100+</div>
+                    <div class="text-sm text-pink-300 mt-2">Coffees</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-gray-300">2+</div>
+                    <div class="text-sm text-rose-300 mt-2">Years Exp.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section Placeholder -->
+        <section id="projects" class="pt-24 pb-24 text-center">
+            <h2 class="text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-10">Projects</h2>
+            <p class="text-2xl text-slate-300 mb-10">Every project is a step forward in mastering the art of coding.</p>
+            
+            <div class="flex justify-center flex-wrap gap-5 px-5">
+                <!-- Project Cards (Static) -->
+                <div class="w-full max-w-md bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800">
+                    <div class="h-64 bg-zinc-800 flex items-center justify-center text-zinc-600">Project Image</div>
+                    <div class="p-6 text-left">
+                        <h3 class="text-2xl font-bold text-white">VR Twins</h3>
+                        <p class="text-sm text-neutral-500 mb-2">React / Tailwind / Three.js</p>
+                        <p class="text-neutral-300 mb-4">Interactive real estate website delivering immersive 3D experiences.</p>
+                        <a href="https://vr-online.vercel.app/" target="_blank" class="inline-block px-4 py-2 bg-slate-800 rounded text-white text-sm hover:bg-slate-700">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="relative z-0 min-h-screen flex flex-col justify-center py-10">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-center text-white mb-10">
+                Let’s <span class="bg-neutral-800 px-2 py-1 rounded">connect!</span>
+            </h1>
+            
+            <div class="flex justify-center w-full px-5">
+                <div class="max-w-md w-full bg-[#151515] rounded-2xl p-8 shadow-2xl border border-zinc-800">
+                    <h2 class="font-bold text-xl text-neutral-200 mb-6">Send me a message...</h2>
+                    <form>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="text-sm font-medium text-white block mb-2">Your Name</label>
+                                <input type="text" class="w-full bg-zinc-800 text-white rounded-md px-3 py-2 border border-zinc-700 focus:border-blue-500 outline-none" placeholder="ex: John Doe">
+                            </div>
+                            <div>
+                                <label class="text-sm font-medium text-white block mb-2">Email Address</label>
+                                <input type="email" class="w-full bg-zinc-800 text-white rounded-md px-3 py-2 border border-zinc-700 focus:border-blue-500 outline-none" placeholder="example@gmail.com">
+                            </div>
+                            <div>
+                                <label class="text-sm font-medium text-white block mb-2">Your Message</label>
+                                <textarea class="w-full bg-zinc-800 text-white rounded-md px-3 py-2 h-32 resize-none border border-zinc-700 focus:border-blue-500 outline-none" placeholder="Message..."></textarea>
+                            </div>
+                            <button class="w-full bg-white text-black font-bold py-2 rounded-md hover:bg-gray-200 transition">Send →</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10 text-gray-500 text-sm">
+                All Rights Reserved © 2025
+            </div>
+        </section>
+
+    </main>
+
 </body>
 </html>
